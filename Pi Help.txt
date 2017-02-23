@@ -1,0 +1,34 @@
+PI::
+
+
+(defun calPi (a b p t0 prePi)
+(let (
+  (aNext (calNextA a b))
+  (bNext(calNextB a b))
+  (pNext(calNextP p))
+  (tNext(calNextT t0 p a b ))
+  )
+
+(/ (expt (+ aNext bNext)2) (* 4 tNext))
+
+))
+
+
+PI Infined LOOP: 
+
+(defun calPi (a b p t0 prePi)
+(let (
+  (aNext (calNextA a b))
+  (bNext (calNextB a b))
+  (pNext (calNextP p))
+  (tNext (calNextT t0 p a b ))
+  )
+  (let (
+    (pi (/ (expt (+ aNext bNext)2) (* 4 tNext)))
+    )
+;;Body of second let
+
+    (calPi (calNextA a b) (calNextB a b) (calNextP p) (calNextT t0 p a b) pi)
+    )
+  )
+  )
